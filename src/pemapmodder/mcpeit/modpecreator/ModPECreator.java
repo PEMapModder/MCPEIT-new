@@ -1,8 +1,15 @@
+/*
+ * @Copyright (C) 2013-2014 PEMapModder
+ * 
+ * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+ */
+
 package pemapmodder.mcpeit.modpecreator;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
+import pemapmodder.mcpeit.modpecreator.jscomponents.Statement;
 import pemapmodder.utils.Utils;
 import android.content.Context;
 import android.widget.Toast;
@@ -43,11 +50,15 @@ public class ModPECreator extends Object{
 	public void addInitStatement(String fx, String[] params){
 		String statement=fx+"(";
 		for(int i=0;i<params.length;i++){
-			statement+=params[i];
+			statement+=params[i]+",";
 		}
+		addInitStatement(statement.substring(0, statement.length()-2)+");");
 	}
 	public void addInitStatement(String statement){
-		
+		script=statement+'\n'+script;
+	}
+	public void addFunctionStatement(String fx, Statement statement){
+		String text=statement.toString();
 	}
 	public void save(){
 		try{

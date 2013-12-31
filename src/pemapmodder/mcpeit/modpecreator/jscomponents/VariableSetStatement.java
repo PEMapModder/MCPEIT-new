@@ -6,6 +6,6 @@
 
 package pemapmodder.mcpeit.modpecreator.jscomponents;
 
-public class VariableSetStatement extends Statement {
+public class VariableSetStatement implements Statement {
 
 }

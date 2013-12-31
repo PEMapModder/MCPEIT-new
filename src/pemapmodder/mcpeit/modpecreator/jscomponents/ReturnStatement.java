@@ -6,6 +6,6 @@
 
 package pemapmodder.mcpeit.modpecreator.jscomponents;
 
-public class ReturnStatement extends Statement{
+public class ReturnStatement implements Statement{
 	
 }

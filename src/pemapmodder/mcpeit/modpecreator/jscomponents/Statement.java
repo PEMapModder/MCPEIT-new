@@ -6,6 +6,7 @@
 
 package pemapmodder.mcpeit.modpecreator.jscomponents;
 
-public class Statement {
+public interface Statement {
+	@Override public String toString();
 	
 }

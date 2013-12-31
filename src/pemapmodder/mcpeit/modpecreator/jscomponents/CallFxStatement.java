@@ -6,6 +6,6 @@
 
 package pemapmodder.mcpeit.modpecreator.jscomponents;
 
-public class CallFxStatement extends Statement {
+public class CallFxStatement implements Statement {
 	
 }

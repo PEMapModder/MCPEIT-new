@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+import pemapmodder.utils.Utils;
+
+@SuppressWarnings("unused")
 public class StartActivity extends Activity {
 
 	@Override

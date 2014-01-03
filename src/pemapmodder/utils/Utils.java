@@ -10,8 +10,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-public class Utils {
+import android.os.Environment;
+import android.view.ViewGroup.LayoutParams;
 
+public class Utils {
+	public final static LayoutParams wrapParams=new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+	public final static LayoutParams flatParams=new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+	public final static String FILE_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/pemapmodder.mcpeit/DONTDELETEME.txt";
 	/**
 	 * Find the first occurrence of an object in an object array
 	 * @param array array to search in

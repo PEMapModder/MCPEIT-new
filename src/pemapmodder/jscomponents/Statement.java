@@ -4,8 +4,9 @@
  * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
  */
 
-package pemapmodder.mcpeit.modpecreator.jscomponents;
+package pemapmodder.jscomponents;
 
-public class CallFxStatement implements Statement {
+public interface Statement {
+	@Override public String toString();
 	
 }

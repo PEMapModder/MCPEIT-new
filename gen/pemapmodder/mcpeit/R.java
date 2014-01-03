@@ -27,15 +27,25 @@ public final class R {
         public static final int action_settings=0x7f080000;
     }
     public static final class layout {
-        public static final int start=0x7f030000;
+        public static final int chooser=0x7f030000;
+        public static final int start=0x7f030001;
     }
     public static final class menu {
-        public static final int start=0x7f070000;
+        public static final int mod_maker_file_chooser=0x7f070000;
+        public static final int start=0x7f070001;
     }
     public static final class string {
+        public static final int Start_modMaker=0x7f050004;
+        public static final int Start_naughtyInit=0x7f050005;
+        /**  StartActivity 
+         */
+        public static final int Start_welcome=0x7f050003;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        /**  ModMakerFileChooser 
+         */
+        public static final int title_activity_mod_maker_file_chooser=0x7f050006;
     }
     public static final class style {
         /** 

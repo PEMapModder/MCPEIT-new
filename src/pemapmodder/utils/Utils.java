@@ -6,7 +6,6 @@
 
 package pemapmodder.utils;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -70,15 +69,21 @@ public class Utils {
 		String[][][] ret={};
 		try{
 			String c=readFile(a.getAssets().open("names.txt"));
-			String[] items=c.split("\n");
+			String[] itemsRaw=c.split("\n");
+			String[] items={};
+			for(int i=0;i<itemsRaw.length;i++){
+				if(itemsRaw[i].charAt(0)=='#')continue;
+				items[items.length]=itemsRaw[i];
+			}
 			String[][] itemDamages={};
 			for(int i=0;i<items.length;i++){
+				
 				itemDamages[i]=items[i].split(";");
 			}
 			
 			for(int id=0;id<itemDamages.length;id++){
 				for(int damage=0;damage<itemDamages[id].length;damage++){
-					
+					ret[id][damage]=itemDamages[id][damage].split(",");
 				}
 			}
 		}catch(Throwable e){
@@ -89,6 +94,7 @@ public class Utils {
 			Log.e("pemapmodder.utils.Utils.getNames()", e.toString());
 			return null;
 		}
+		
 		return ret;
 	}
 }

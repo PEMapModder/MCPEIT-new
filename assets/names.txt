@@ -1,0 +1,12 @@
+#
+#@Copyright (C) 2013-2014 PEMapModder
+# 
+#Anyone may use this text file for any purposes as long as they give credit to the people who contributed to this list on minecraftforum.net
+#
+#A list of MCPE item names (official and unofficial) of different languages. Thanks to the members on minecraftforum.net
+0,0:0,air,empty
+1,1:0,stone,smooth stone
+2,2:0,grass
+3,3:0,dirt
+4,4:0,cobble,cobblestone
+5,5:0,wooden planks,wood planks,planks,oak wood planks,oak wooden planks,oak planks,default planks;5:1,spruce planks,spruce wooden planks;5:2;5:3

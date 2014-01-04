@@ -63,12 +63,12 @@ public class StartActivity extends Activity {
 				OutputStreamWriter osw=new OutputStreamWriter(new FileOutputStream(f));
 				Integer i=Integer.getInteger(Utils.readFile(f));
 				if(i==null){//naughty
-					Toast.makeText(this, "FILE CORRUPTED", Toast.LENGTH_LONG).show();
+					Toast.makeText(this, string.Start_naughtyInit, Toast.LENGTH_LONG).show();
 					osw.close();
 					f.delete();
 					init();
 				}
-				osw.write(i);
+				osw.write(Integer.toHexString(i+1));
 				osw.close();
 			}
 		}catch(Throwable e){

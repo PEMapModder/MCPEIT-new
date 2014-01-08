@@ -9,8 +9,19 @@
     <string name="Start_welcome">Welcome to MCPEIT!</string>
     <string name="Start_modMaker">ModPE Script Maker!</string>
     <string name="Start_naughtyInit">File corrupted! Rebuilding config</string>
-    
+
     <!-- ModMakerFileChooser -->
     <string name="title_activity_mod_maker_file_chooser">ModMakerFileChooser</string>
+    <string name="MMFC_chooseFile">Choose a file</string>
+    <string name="MMFC_newFile">Create new file</string>
+    <string name="MMFC_filename">with filename&#8230;</string>
+    
+    <!-- ModEditorMain -->
+    <string name="title_activity_mod_editor_main">ModEditorMain</string>
+    <string name="MEM_title$1">Editing</string>
+    <string name="MEM_title$2">&#8230;</string>
+    <string name="MEM_viewScriptRaw">View the raw script</string>
+    <string name="MEM_viewScriptAI">View the script translated to human language</string>
+    <string name="MEM_viewScript_back">Press back button to return to the editor.</string>
 
 </resources>

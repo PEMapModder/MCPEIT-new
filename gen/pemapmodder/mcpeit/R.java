@@ -28,13 +28,23 @@ public final class R {
     }
     public static final class layout {
         public static final int chooser=0x7f030000;
-        public static final int start=0x7f030001;
+        public static final int mod_editor_main=0x7f030001;
+        public static final int start=0x7f030002;
     }
     public static final class menu {
-        public static final int mod_maker_file_chooser=0x7f070000;
-        public static final int start=0x7f070001;
+        public static final int mod_editor_main=0x7f070000;
+        public static final int mod_maker_file_chooser=0x7f070001;
+        public static final int start=0x7f070002;
     }
     public static final class string {
+        public static final int MEM_title$1=0x7f05000b;
+        public static final int MEM_title$2=0x7f05000c;
+        public static final int MEM_viewScriptAI=0x7f05000e;
+        public static final int MEM_viewScriptRaw=0x7f05000d;
+        public static final int MEM_viewScript_back=0x7f05000f;
+        public static final int MMFC_chooseFile=0x7f050007;
+        public static final int MMFC_filename=0x7f050009;
+        public static final int MMFC_newFile=0x7f050008;
         public static final int Start_modMaker=0x7f050004;
         public static final int Start_naughtyInit=0x7f050005;
         /**  StartActivity 
@@ -43,6 +53,9 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        /**  ModEditorMain 
+         */
+        public static final int title_activity_mod_editor_main=0x7f05000a;
         /**  ModMakerFileChooser 
          */
         public static final int title_activity_mod_maker_file_chooser=0x7f050006;

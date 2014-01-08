@@ -21,9 +21,13 @@ public class Utils {
 	 * totally wrap content
 	 */
 	public final static LayoutParams wrapParams=new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-	
 	public final static LayoutParams flatParams=new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
 	public final static String FILE_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/pemapmodder.mcpeit/DONTDELETEME.txt";
+	public final static File getAppDir(){
+		File r=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/pemapmodder.mcpeit/");
+		r.mkdirs();
+		return r;
+	}
 	/**
 	 * Find the first occurrence of an object in an object array
 	 * @param array array to search in

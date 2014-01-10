@@ -22,8 +22,18 @@ public class Utils {
 	 * totally wrap content
 	 */
 	public final static LayoutParams wrapParams=new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+	/**
+	 * full width, wrap height
+	 */
 	public final static LayoutParams flatParams=new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+	/**
+	 * file path of the config file
+	 */
 	public final static String FILE_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/pemapmodder.mcpeit/DONTDELETEME.txt";
+	/**
+	 * The app's directory on the external storage
+	 * @return directory of the app
+	 */
 	public final static File getAppDir(){
 		File r=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/pemapmodder.mcpeit/");
 		r.mkdirs();
@@ -31,6 +41,7 @@ public class Utils {
 	}
 	/**
 	 * Find the first occurrence of an object in an object array
+	 * 
 	 * @param array array to search in
 	 * @param item the object to search
 	 * @return the key of the object, or -1 if not found
@@ -99,9 +110,13 @@ public class Utils {
 			Log.e("pemapmodder.utils.Utils.getNames()", e.toString());
 			return null;
 		}
-		
 		return ret;
 	}
+	/**
+	 * Prints an error
+	 * @param ctx
+	 * @param e
+	 */
 	public static void err(Context ctx, Throwable e) {
 		Log.e(ctx.getClass().getName(), e.toString());
 		Toast.makeText(ctx, (e.getMessage()==null?e.toString():e.getMessage()), Toast.LENGTH_LONG).show();

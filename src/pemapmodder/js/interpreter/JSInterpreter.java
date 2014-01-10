@@ -15,15 +15,83 @@ package pemapmodder.js.interpreter;
 import pemapmodder.js.JSR.Exceptions.IDs;
 import pemapmodder.js.exception.JSException;
 import pemapmodder.js.lang.ModScript;
+import pemapmodder.js.lang.comment.Comment;
+import pemapmodder.js.lang.function.Function;
+import pemapmodder.js.lang.statement.Statement;
+import pemapmodder.utils.StrUtils;
+import android.os.Bundle;
 
 public class JSInterpreter {
-	public static ModScript toObject(String content) throws Exception{
+	public static ModScript toObject(String inContent) throws Exception{
+		String content=new String(inContent);
 		content=cleanLines(cleanSpaces(cleanStarSlashComments(cleanDoubleSlashComments(content))));
 		if(content==null)return null;
-		return null;//TODO replace this
+		Bundle[] fxBundles=findFunctions(content);
+		Function[] functions={};
+		for(int i=0;i<fxBundles.length;i++)
+			functions[i]=toFunction(fxBundles[i]);
+		Statement[] initStatements=findInitStatements(content);
+		Comment[] comments=findHeadComments(inContent);
+		return ModScript.createFromObjects(comments, initStatements, functions);
+	}
+	private static Comment[] findHeadComments(String inContent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private static Statement[] findInitStatements(String content) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private static Function toFunction(Bundle bundle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private static Bundle[] findFunctions(String script) throws Exception {
+		Bundle[] result={};
+		if(!script.contains("function "))return result;//straightforward skips an empty script or no-condition script
+		int[] o=StrUtils.findOccurrences(script, "function");//forgot why it is `o`
+		for(int i=0;i<o.length;i++){
+			String fxName=StrUtils.substrExc(script, o[i]+9, "(");
+			String[] params=StrUtils.substrExc(script, o[i]+fxName.length()+10, ")").split(",");
+			int offset=o[i]+9+fxName.length()+1+StrUtils.substrInc(script, o[i]+fxName.length()+10, "){").length();
+			int quoteStatus=0;
+			int braces=1;
+			String body=null;
+			for(int j=offset;j<script.length()-offset;j++){
+				if(script.charAt(j)=='\\'&&script.charAt(j+1)=='\''){
+					if(quoteStatus==0)
+						quoteStatus=1;
+					if(quoteStatus==1)
+						quoteStatus=0;
+				}
+				if(script.charAt(j)=='\\'&&script.charAt(j+1)=='\"'){
+					if(quoteStatus==0)
+						quoteStatus=2;
+					if(quoteStatus==2)
+						quoteStatus=0;
+				}
+				if(script.charAt(j)=='{'&&quoteStatus==0)
+					braces++;
+				if(script.charAt(j)=='}'&&quoteStatus==0){
+					braces--;
+					if(braces==0){//ends
+						body=script.substring(offset, j);
+						break;
+					}
+				}
+			}
+			if(body==null)throw JSException.getException(IDs.BRACE_NOT_CLOSED,
+					"non-closed function body braces for "+script.substring(o[i],offset-1))[0];
+			Bundle function=new Bundle();
+			function.putString("function.name", fxName);
+			function.putStringArray("function.params", params);
+			function.putString("function.body", body);
+			result[result.length]=function;
+		}
+		return result;
 	}
 	private static String cleanLines(String script) {
-		return script.replace("\n", "")+"\n";//add new line at the end
+		return script.replace("\n", "");
 	}
 	private static String cleanSpaces(String script) {
 		while(script.contains("  "))

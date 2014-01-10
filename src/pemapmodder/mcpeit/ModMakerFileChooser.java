@@ -111,7 +111,8 @@ public class ModMakerFileChooser extends Activity {
 		}
 	}
 	protected void chooseFile() {
-		Intent i=new Intent();
+		Intent i=new Intent(Intent.ACTION_GET_CONTENT);
+		//i.addCategory(Intent.CATEGORY_OPENABLE);
 		startActivityForResult(i, CHOOSE_FILE);
 	}
 	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data){

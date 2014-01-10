@@ -7,9 +7,10 @@
 package pemapmodder.mcpeit;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 import pemapmodder.mcpeit.R.string;
-import pemapmodder.mcpeit.modpecreator.ModPECreator;
 import pemapmodder.utils.Utils;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -25,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class ModMakerFileChooser extends Activity {
 	protected static final int CHOOSE_FILE = 9542;
@@ -32,7 +34,7 @@ public class ModMakerFileChooser extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.chooser);
+		setContentView(getLayout());
 		setupActionBar();
 	}
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -93,20 +95,34 @@ public class ModMakerFileChooser extends Activity {
 		
 		return ret;
 	}
-	protected void create(String name) {
+	protected void create(String name){
 		File f=new File(Utils.getAppDir().getAbsolutePath()+"/scripts/"+name+".js");
-		new ModPECreator(this, f).finalize();
-		startActivity(new Intent(this,ModEditorMain.class).setData(Uri.fromFile(f)));
+		try{
+			FileOutputStream os=new FileOutputStream(f);
+			InputStream is=getAssets().open("initer.txt");
+			for(int c=is.read();c!=-1;c=is.read()){
+				os.write(c);
+			}
+			os.close();
+			is.close();
+			startActivity(new Intent(this,ModEditorMain.class).setData(Uri.fromFile(f)));
+		}catch(Exception e){
+			Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+		}
 	}
 	protected void chooseFile() {
 		Intent i=new Intent();
-		i=i.setType("js");
 		startActivityForResult(i, CHOOSE_FILE);
 	}
 	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		if(data!=null&&resultCode==RESULT_OK){
 			switch(requestCode){
 			case CHOOSE_FILE:
+				String p=new File(data.getData().getPath()).getAbsolutePath();
+				if(!p.substring(p.length()-3).equalsIgnoreCase(".js")){
+					Toast.makeText(this, string.MMFC_notJs, Toast.LENGTH_LONG).show();
+					return;
+				}
 				startActivity(new Intent(this, ModEditorMain.class).setData(data.getData()));
 			}
 		}

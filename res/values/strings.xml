@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * @Copyright (C) 2013-2014 PEMapModder
+ * 
+ * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+ -->
 <resources>
 
     <string name="app_name">MCPEIT</string>
@@ -15,6 +20,7 @@
     <string name="MMFC_chooseFile">Choose a file</string>
     <string name="MMFC_newFile">Create new file</string>
     <string name="MMFC_filename">with filename&#8230;</string>
+    <string name="MMFC_notJs">You did not choose a JS file. Please choose again.</string>
     
     <!-- ModEditorMain -->
     <string name="title_activity_mod_editor_main">ModEditorMain</string>

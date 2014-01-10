@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
@@ -100,5 +101,9 @@ public class Utils {
 		}
 		
 		return ret;
+	}
+	public static void err(Context ctx, Throwable e) {
+		Log.e(ctx.getClass().getName(), e.toString());
+		Toast.makeText(ctx, (e.getMessage()==null?e.toString():e.getMessage()), Toast.LENGTH_LONG).show();
 	}
 }

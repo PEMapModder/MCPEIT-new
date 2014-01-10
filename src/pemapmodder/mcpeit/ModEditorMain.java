@@ -8,8 +8,10 @@ package pemapmodder.mcpeit;
 
 import java.io.File;
 
+import pemapmodder.js.ModPECreator;
+import pemapmodder.js.interpreter.JSInterpreter;
+import pemapmodder.js.lang.ModScript;
 import pemapmodder.mcpeit.R.string;
-import pemapmodder.mcpeit.modpecreator.ModPECreator;
 import pemapmodder.utils.Utils;
 import android.app.Activity;
 import android.os.Bundle;
@@ -26,11 +28,30 @@ public class ModEditorMain extends Activity {
 
 	protected boolean backToMain=false;
 	protected ModPECreator creator;
+	protected ModScript script;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(getLayout());
-		creator=new ModPECreator(this,getIntent().getData());
+		try {
+			File f=new File(getIntent().getData().getPath());
+			final String scriptContent=Utils.readFile(f);
+			Thread interpreter=new Thread(new Runnable(){
+				@Override public void run() {
+					try {
+						script=JSInterpreter.toObject(scriptContent);
+					} catch (Exception e) {
+						Utils.err(getApplicationContext(), e);
+					}
+				}
+			});
+			interpreter.setPriority(Thread.MAX_PRIORITY);
+			interpreter.start();
+			creator=new ModPECreator(this,f,script);
+			script=null;//to save memory
+		} catch (Throwable e) {
+			Utils.err(this,e);
+		}
 	}
 	protected LinearLayout getLayout(){
 		LinearLayout ret=new LinearLayout(this);

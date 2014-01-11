@@ -6,6 +6,16 @@
 
 package pemapmodder.js.lang.comment;
 
-public class CopyrightComment extends Comment {
+public class AnnotationComment extends FullLineComment {
 
+	public String name;
+	public AnnotationComment(String name, String string) {
+		super(string);
+		this.name=name;
+	}
+	@Override
+	public String toRawString() {
+		return "//@"+name+" "+comment+"\n";
+	}
+	
 }

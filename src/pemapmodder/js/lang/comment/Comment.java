@@ -6,15 +6,11 @@
 
 package pemapmodder.js.lang.comment;
 
-public class Comment {
-
-	public Comment() {
-		// TODO Auto-generated constructor stub
+public abstract class Comment {
+	public abstract String toRawString();
+	public static FullLineComment createUpon(String string){
+		if(string.substring(0, 2)!="//")return null;
+		if(string.charAt(2)=='@')return new AnnotationComment(string.split(" ")[0].substring(3),string.split(" ", 2)[1]);
+		return new FullLineComment(string.substring(2));
 	}
-
-	public String toRawString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

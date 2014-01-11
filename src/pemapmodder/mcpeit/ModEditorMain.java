@@ -7,6 +7,7 @@
 package pemapmodder.mcpeit;
 
 import java.io.File;
+import java.lang.Thread.UncaughtExceptionHandler;
 
 import pemapmodder.js.ModPECreator;
 import pemapmodder.js.interpreter.JSInterpreter;
@@ -47,6 +48,12 @@ public class ModEditorMain extends Activity {
 			});
 			interpreter.setPriority(Thread.MAX_PRIORITY);
 			interpreter.start();
+			interpreter.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){
+				@Override
+				public void uncaughtException(Thread thread, Throwable ex) {
+					Utils.err(getApplicationContext(), ex);
+				}
+			});
 			creator=new ModPECreator(this,f,script);
 			script=null;//to save memory
 		} catch (Throwable e) {

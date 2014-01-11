@@ -30,13 +30,19 @@ public class JSInterpreter {
 		Function[] functions={};
 		for(int i=0;i<fxBundles.length;i++)
 			functions[i]=toFunction(fxBundles[i]);
+		
 		Statement[] initStatements=findInitStatements(content);
 		Comment[] comments=findHeadComments(inContent);
 		return ModScript.createFromObjects(comments, initStatements, functions);
 	}
 	private static Comment[] findHeadComments(String inContent) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] lines=inContent.split("\n");
+		Comment[] result={};
+		for(int i=0;i<lines.length;i++){
+			Comment c=Comment.createUpon(lines[i]);
+			if(c!=null)result[result.length]=c;
+		}
+		return result;
 	}
 	private static Statement[] findInitStatements(String content) {
 		// TODO Auto-generated method stub
@@ -50,6 +56,7 @@ public class JSInterpreter {
 		Bundle[] result={};
 		if(!script.contains("function "))return result;//straightforward skips an empty script or no-condition script
 		int[] o=StrUtils.findOccurrences(script, "function");//forgot why it is `o`
+		Bundle[] functions={};
 		for(int i=0;i<o.length;i++){
 			String fxName=StrUtils.substrExc(script, o[i]+9, "(");
 			String[] params=StrUtils.substrExc(script, o[i]+fxName.length()+10, ")").split(",");
@@ -57,7 +64,8 @@ public class JSInterpreter {
 			int quoteStatus=0;
 			int braces=1;
 			String body=null;
-			for(int j=offset;j<script.length()-offset;j++){
+			int j=offset;
+			for(j=offset;j<script.length()-offset;j++){
 				if(script.charAt(j)=='\\'&&script.charAt(j+1)=='\''){
 					if(quoteStatus==0)
 						quoteStatus=1;
@@ -86,14 +94,18 @@ public class JSInterpreter {
 			function.putString("function.name", fxName);
 			function.putStringArray("function.params", params);
 			function.putString("function.body", body);
-			result[result.length]=function;
+			function.putInt("function.offset.start", o[i]);
+			function.putInt("function.offset.end", j);
+			functions[functions.length]=function;
 		}
-		return result;
+		
+		return functions;
 	}
 	private static String cleanLines(String script) {
 		return script.replace("\n", "");
 	}
 	private static String cleanSpaces(String script) {
+		script.replace("\t", " ");
 		while(script.contains("  "))
 			script.replace("  ", " ");
 		for(int i=1;i<script.length()-1;i++){

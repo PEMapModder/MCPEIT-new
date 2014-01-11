@@ -7,8 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +36,10 @@
         <activity
             android:name="pemapmodder.mcpeit.ModEditorMain"
             android:label="@string/title_activity_mod_editor_main" >
+        </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.IDFinderActivity"
+            android:label="@string/title_activity_idfinder" >
         </activity>
     </application>
 

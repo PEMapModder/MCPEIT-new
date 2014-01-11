@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
+<!--
  * @Copyright (C) 2013-2014 PEMapModder
  * 
- * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
- -->
+ * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+-->
 <resources>
 
     <string name="app_name">MCPEIT</string>
@@ -21,7 +21,7 @@
     <string name="MMFC_newFile">Create new file</string>
     <string name="MMFC_filename">with filename&#8230;</string>
     <string name="MMFC_notJs">You did not choose a JS file. Please choose again.</string>
-    
+
     <!-- ModEditorMain -->
     <string name="title_activity_mod_editor_main">ModEditorMain</string>
     <string name="MEM_title$1">Editing</string>
@@ -29,5 +29,6 @@
     <string name="MEM_viewScriptRaw">View the raw script</string>
     <string name="MEM_viewScriptAI">View the script translated to human language</string>
     <string name="MEM_viewScript_back">Press back button to return to the editor.</string>
+    <string name="title_activity_idfinder">IDFinderActivity</string>
 
 </resources>

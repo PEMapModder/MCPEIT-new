@@ -27,14 +27,16 @@ public final class R {
         public static final int action_settings=0x7f080000;
     }
     public static final class layout {
-        public static final int chooser=0x7f030000;
-        public static final int mod_editor_main=0x7f030001;
-        public static final int start=0x7f030002;
+        public static final int activity_idfinder=0x7f030000;
+        public static final int chooser=0x7f030001;
+        public static final int mod_editor_main=0x7f030002;
+        public static final int start=0x7f030003;
     }
     public static final class menu {
-        public static final int mod_editor_main=0x7f070000;
-        public static final int mod_maker_file_chooser=0x7f070001;
-        public static final int start=0x7f070002;
+        public static final int idfinder=0x7f070000;
+        public static final int mod_editor_main=0x7f070001;
+        public static final int mod_maker_file_chooser=0x7f070002;
+        public static final int start=0x7f070003;
     }
     public static final class string {
         public static final int MEM_title$1=0x7f05000c;
@@ -54,6 +56,7 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        public static final int title_activity_idfinder=0x7f050011;
         /**  ModEditorMain 
          */
         public static final int title_activity_mod_editor_main=0x7f05000b;

@@ -121,4 +121,7 @@ public class Utils {
 		Log.e(ctx.getClass().getName(), e.toString());
 		Toast.makeText(ctx, (e.getMessage()==null?e.toString():e.getMessage()), Toast.LENGTH_LONG).show();
 	}
+	public static boolean compare(String a, String b) {
+		return a.contains(b)||b.contains(a)||a==null||b==null||a==""||b=="";
+	}
 }

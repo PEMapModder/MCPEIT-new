@@ -50,4 +50,13 @@ public class StrUtils extends Utils {
 		}
 		return ret;
 	}
+	/**
+	 * Cut a string's substring with start and end offsets provided
+	 * @param str 
+	 * @param pause offset starting to be cut
+	 * @param resume start offset of the second piece of cut string
+	 */
+	public static String cutString(String str,int pause,int resume){
+		return str.substring(0, pause)+str.substring(resume);
+	}
 }

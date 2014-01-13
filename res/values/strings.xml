@@ -29,6 +29,9 @@
     <string name="MEM_viewScriptRaw">View the raw script</string>
     <string name="MEM_viewScriptAI">View the script translated to human language</string>
     <string name="MEM_viewScript_back">Press back button to return to the editor.</string>
+    
+    <!-- IDFinder -->
     <string name="title_activity_idfinder">IDFinderActivity</string>
+    <string name="IDFinder_backTwicePress">Are you sure to cancel choosing item ID and go back? If yes, tap the back button again.</string>
 
 </resources>

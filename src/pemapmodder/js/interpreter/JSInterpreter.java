@@ -30,8 +30,7 @@ public class JSInterpreter {
 		Function[] functions={};
 		for(int i=0;i<fxBundles.length;i++)
 			functions[i]=toFunction(fxBundles[i]);
-		
-		Statement[] initStatements=findInitStatements(content);
+		Statement[] initStatements=findInitStatements(content,fxBundles);
 		Comment[] comments=findHeadComments(inContent);
 		return ModScript.createFromObjects(comments, initStatements, functions);
 	}
@@ -44,8 +43,11 @@ public class JSInterpreter {
 		}
 		return result;
 	}
-	private static Statement[] findInitStatements(String content) {
-		// TODO Auto-generated method stub
+	private static Statement[] findInitStatements(String content, Bundle[] fxBundles) {
+		for(int i=0;i<fxBundles.length;i++){
+			content=StrUtils.cutString(content, fxBundles[i].getInt("function.offset.start"), fxBundles[i].getInt("function.offset.end"+1));
+		}
+		
 		return null;
 	}
 	private static Function toFunction(Bundle bundle) {

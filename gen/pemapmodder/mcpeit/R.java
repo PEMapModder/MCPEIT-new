@@ -39,6 +39,7 @@ public final class R {
         public static final int start=0x7f070003;
     }
     public static final class string {
+        public static final int IDFinder_backTwicePress=0x7f050012;
         public static final int MEM_title$1=0x7f05000c;
         public static final int MEM_title$2=0x7f05000d;
         public static final int MEM_viewScriptAI=0x7f05000f;
@@ -56,6 +57,8 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        /**  IDFinder 
+         */
         public static final int title_activity_idfinder=0x7f050011;
         /**  ModEditorMain 
          */

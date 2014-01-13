@@ -11,7 +11,7 @@ import pemapmodder.js.lang.comment.Comment;
 import pemapmodder.js.lang.function.Function;
 import pemapmodder.js.lang.statement.Statement;
 
-public class ModScript {
+public class ModScript extends JSLang{
 
 	private String raw;
 	public Comment[] comments;
@@ -45,6 +45,10 @@ public class ModScript {
 			this.raw+=(this.initStatements[i].toRawString()+"\n");
 		for(int i=0;i<this.functions.length;i++)
 			this.raw+=(this.functions[i].toRawString()+"\n");
+	}
+	@Override
+	public String toRawString() {
+		return getRaw();
 	}
 	
 }

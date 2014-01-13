@@ -6,12 +6,20 @@
 
 package pemapmodder.js.lang.statement;
 
+import pemapmodder.js.lang.var.VarSpace;
+
 public class VarDefineStatement extends Statement {
+
+	String name;
+	VarSpace defaultValue;
+	public VarDefineStatement(String varName, String inValue) {
+		this.name=varName;
+		this.defaultValue=VarSpace.createUpon(inValue);
+	}
 
 	@Override
 	public String toRawString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "var "+this.name+"="+this.defaultValue.toRawString();
 	}
 	
 }

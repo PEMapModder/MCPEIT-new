@@ -22,6 +22,11 @@ import pemapmodder.utils.StrUtils;
 import android.os.Bundle;
 
 public class JSInterpreter {
+	public static final String BUNDLE_FUNCTION_NAME = "pemapmodder.js.lang.function.name";
+	public static final String BUNDLE_FUNCTION_PARAMS = "pemapmodder.js.lang.function.params";
+	public static final String BUNDLE_FUNCTION_BODY = "pemapmodder.js.lang.function.body";
+	public static final String BUNDLE_FUNCTION_OFFSET_START = "pemapmodder.js.lang.function.offset.start";
+	public static final String BUNDLE_FUNCTION_OFFSET_END = "pemapmodder.js.lang.function.offset.end";
 	public static ModScript toObject(String inContent) throws Exception{
 		String content=new String(inContent);
 		content=cleanLines(cleanSpaces(cleanStarSlashComments(cleanDoubleSlashComments(content))));
@@ -43,16 +48,19 @@ public class JSInterpreter {
 		}
 		return result;
 	}
-	private static Statement[] findInitStatements(String content, Bundle[] fxBundles) {
-		for(int i=0;i<fxBundles.length;i++){
-			content=StrUtils.cutString(content, fxBundles[i].getInt("function.offset.start"), fxBundles[i].getInt("function.offset.end"+1));
+	private static Statement[] findInitStatements(String content, Bundle[] fxBundles)throws Exception{
+		for(int i=0;i<fxBundles.length;i++)
+			content=StrUtils.cutString(content, fxBundles[i].getInt(BUNDLE_FUNCTION_OFFSET_START), fxBundles[i].getInt(BUNDLE_FUNCTION_OFFSET_END+1));
+		String[] sentences=content.split(";");
+		Statement[] ret={};
+		for(int i=0;i<sentences.length;i++){
+			Statement s=Statement.createUpon(sentences[i],true);
+			if(s!=null)ret[ret.length]=s;
 		}
-		
-		return null;
+		return ret;
 	}
 	private static Function toFunction(Bundle bundle) {
-		// TODO Auto-generated method stub
-		return null;
+		return Function.createUpon(bundle);
 	}
 	private static Bundle[] findFunctions(String script) throws Exception {
 		Bundle[] result={};
@@ -93,11 +101,11 @@ public class JSInterpreter {
 			if(body==null)throw JSException.getException(IDs.BRACE_NOT_CLOSED,
 					"non-closed function body braces for "+script.substring(o[i],offset-1))[0];
 			Bundle function=new Bundle();
-			function.putString("function.name", fxName);
-			function.putStringArray("function.params", params);
-			function.putString("function.body", body);
-			function.putInt("function.offset.start", o[i]);
-			function.putInt("function.offset.end", j);
+			function.putString(BUNDLE_FUNCTION_NAME, fxName);
+			function.putStringArray(BUNDLE_FUNCTION_PARAMS, params);
+			function.putString(BUNDLE_FUNCTION_BODY, body);
+			function.putInt(BUNDLE_FUNCTION_OFFSET_START, o[i]);
+			function.putInt(BUNDLE_FUNCTION_OFFSET_END, j);
 			functions[functions.length]=function;
 		}
 		

@@ -6,7 +6,13 @@
 
 package pemapmodder.js.lang.var;
 
+import pemapmodder.js.lang.JSLang;
 
-public abstract class VarSpace {
-	@Override public abstract String toString();
+public abstract class VarSpace extends JSLang{
+	@Override public abstract String toRawString();
+
+	public static VarSpace createUpon(String inValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -6,6 +6,19 @@
 
 package pemapmodder.js.lang.statement;
 
-public abstract class Statement {
+import pemapmodder.js.lang.JSLang;
+
+public abstract class Statement extends JSLang{
 	public abstract String toRawString();
+
+	public static Statement createUpon(String string, boolean isIniter) {
+		// TODO Auto-generated method stub
+		if(string.substring(0,4)=="var "){//VarDefineStatement
+			String[] args=string.substring(4).split("=");
+			if(isIniter)
+				return new FieldDefineStatement(args[0],string.substring(4+args[0].length()));
+			return new VarDefineStatement(args[0],string.substring(4+args[0].length()));
+		}
+		return null;
+	}
 }

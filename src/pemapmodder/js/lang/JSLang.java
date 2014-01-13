@@ -4,12 +4,8 @@
  * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
  */
 
-package pemapmodder.js.lang.statement;
+package pemapmodder.js.lang;
 
-public class FieldDefineStatement extends VarDefineStatement {
-
-	public FieldDefineStatement(String varName, String inValue) {
-		super(varName,inValue);
-	}
-	
+public abstract class JSLang {//basically idk why i add this
+	public abstract String toRawString();
 }

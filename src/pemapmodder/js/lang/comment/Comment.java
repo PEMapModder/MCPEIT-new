@@ -6,10 +6,12 @@
 
 package pemapmodder.js.lang.comment;
 
-public abstract class Comment {
+import pemapmodder.js.lang.JSLang;
+
+public abstract class Comment extends JSLang{
 	public abstract String toRawString();
 	public static FullLineComment createUpon(String string){
-		if(string.substring(0, 2)!="//")return null;
+		if(string==null||string.substring(0, 2)!="//")return null;
 		if(string.charAt(2)=='@')return new AnnotationComment(string.split(" ")[0].substring(3),string.split(" ", 2)[1]);
 		return new FullLineComment(string.substring(2));
 	}

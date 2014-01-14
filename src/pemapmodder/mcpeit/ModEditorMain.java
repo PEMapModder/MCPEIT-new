@@ -15,6 +15,7 @@ import pemapmodder.js.lang.ModScript;
 import pemapmodder.mcpeit.R.string;
 import pemapmodder.utils.Utils;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 
 public class ModEditorMain extends Activity {
 
+	public static final String JS_EXCEPTION_MSG = "pemapmodder.mcpeit.ModEditorMain.jsExceptionMsg";
+	public static final String JS_EXCEPTION_PATH = "pemapmodder.mcpeit.ModEditorMain.jsExceptionPath";
 	protected boolean backToMain=false;
 	protected ModPECreator creator;
 	protected ModScript script;
@@ -35,14 +38,14 @@ public class ModEditorMain extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(getLayout());
 		try {
-			File f=new File(getIntent().getData().getPath());
+			final File f=new File(getIntent().getData().getPath());
 			final String scriptContent=Utils.readFile(f);
 			Thread interpreter=new Thread(new Runnable(){
 				@Override public void run() {
 					try {
 						script=JSInterpreter.toObject(scriptContent);
 					} catch (Exception e) {
-						Utils.err(getApplicationContext(), e);
+						jsErr(e,f);
 					}
 				}
 			});
@@ -59,6 +62,9 @@ public class ModEditorMain extends Activity {
 		} catch (Throwable e) {
 			Utils.err(this,e);
 		}
+	}
+	protected void jsErr(Exception e,File f) {
+		startActivity(new Intent(this,ShowJSErrorActivity.class).putExtra(JS_EXCEPTION_MSG, e.getMessage()).putExtra(JS_EXCEPTION_PATH, f.getAbsolutePath()));
 	}
 	protected LinearLayout getLayout(){
 		LinearLayout ret=new LinearLayout(this);

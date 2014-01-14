@@ -6,8 +6,15 @@
 
 package pemapmodder.js.lang.statement.block;
 
+import android.os.Bundle;
 import pemapmodder.js.lang.statement.Statement;
 
 public abstract class Block extends Statement {
 	public Statement[] statements={};
+
+	public static Statement createUpon(String[] def, Bundle[] content) {
+		//switch block keyword
+		if(def[1].equals("try"))
+			return TryBlock.createUpon(def,content);
+	}
 }

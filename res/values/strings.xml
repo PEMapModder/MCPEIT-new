@@ -2,7 +2,7 @@
 <!--
  * @Copyright (C) 2013-2014 PEMapModder
  * 
- * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+ * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
 -->
 <resources>
 
@@ -29,9 +29,17 @@
     <string name="MEM_viewScriptRaw">View the raw script</string>
     <string name="MEM_viewScriptAI">View the script translated to human language</string>
     <string name="MEM_viewScript_back">Press back button to return to the editor.</string>
-    
+
     <!-- IDFinder -->
     <string name="title_activity_idfinder">IDFinderActivity</string>
     <string name="IDFinder_backTwicePress">Are you sure to cancel choosing item ID and go back? If yes, tap the back button again.</string>
+    
+    <!-- JSErrShower -->
+    <string name="title_activity_show_jserror">An error occurred at JS</string>
+    <string name="JSErr_title$1">An error occurred at the JavaScript file (path </string>
+    <string name="JSErr_title$2">).</string>
+    <string name="JSErr_errLog">Error log:</string>
+    <string name="JSErr_dump">Dump error log to </string>
+    <string name="JSErr_dumpFinish">Dump error log finished</string>
 
 </resources>

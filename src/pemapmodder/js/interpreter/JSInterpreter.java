@@ -36,10 +36,10 @@ public class JSInterpreter {
 		for(int i=0;i<fxBundles.length;i++)
 			functions[i]=toFunction(fxBundles[i]);
 		Statement[] initStatements=findInitStatements(content,fxBundles);
-		Comment[] comments=findHeadComments(inContent);
+		Comment[] comments=findComments(inContent);
 		return ModScript.createFromObjects(comments, initStatements, functions);
 	}
-	private static Comment[] findHeadComments(String inContent) {
+	private static Comment[] findComments(String inContent) {
 		String[] lines=inContent.split("\n");
 		Comment[] result={};
 		for(int i=0;i<lines.length;i++){
@@ -59,7 +59,7 @@ public class JSInterpreter {
 		}
 		return ret;
 	}
-	private static Function toFunction(Bundle bundle) {
+	private static Function toFunction(Bundle bundle) throws Exception {
 		return Function.createUpon(bundle);
 	}
 	private static Bundle[] findFunctions(String script) throws Exception {
@@ -99,7 +99,7 @@ public class JSInterpreter {
 				}
 			}
 			if(body==null)throw JSException.getException(IDs.BRACE_NOT_CLOSED,
-					"non-closed function body braces for "+script.substring(o[i],offset-1))[0];
+					"non-closed function body braces for "+script.substring(o[i],offset-1));
 			Bundle function=new Bundle();
 			function.putString(BUNDLE_FUNCTION_NAME, fxName);
 			function.putStringArray(BUNDLE_FUNCTION_PARAMS, params);
@@ -196,7 +196,7 @@ public class JSInterpreter {
 				recordedStartCommentOffset=i;
 			}
 			else if(script.charAt(i)=='*'&&script.charAt(i+1)=='/'&&!isInComment&&isInQuote==0)
-				throw JSException.getException(IDs.INVALID_TOKEN_GENERIC, "\"*/\"")[0];
+				throw JSException.getException(IDs.INVALID_TOKEN_GENERIC, "\"*/\"");
 			else if(script.charAt(i)!='\\'&&script.charAt(i+1)=='\''&&!isInComment&&isInQuote==0)
 				isInQuote=1;
 			else if(script.charAt(i)!='\\'&&script.charAt(i+1)=='\''&&!isInComment&&isInQuote==1)

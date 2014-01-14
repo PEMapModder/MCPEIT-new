@@ -6,7 +6,21 @@
 
 package pemapmodder.js.lang.statement.block;
 
+import pemapmodder.js.lang.function.Function;
+import pemapmodder.js.lang.statement.Statement;
+import android.os.Bundle;
+
 public class TryCatchBlock extends TryBlock {
+	Statement[] tryer;
+	String catchErrVarName;
+	Statement[] catcher;
+	public TryCatchBlock(Bundle tryer, String catchErrVarName, Bundle catcher) throws Exception {
+		String[] passTryer={tryer.getString(Function.BUNDLE_CONTENT)};
+		this.tryer=Statement.createUpon(passTryer, new Bundle[0]);
+		this.catchErrVarName=catchErrVarName;
+		String[] passCatcher={catcher.getString(Function.BUNDLE_CONTENT)};
+		this.catcher=Statement.createUpon(passCatcher,new Bundle[0]);
+	}
 
 	@Override
 	public String toRawString() {

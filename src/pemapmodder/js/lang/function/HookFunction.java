@@ -7,7 +7,6 @@
 package pemapmodder.js.lang.function;
 
 public class HookFunction extends Function {
-
 	public static final String[] BUILT_IN_HOOK_LIST = {
 		"useItem",
 		"attackHook",
@@ -18,9 +17,7 @@ public class HookFunction extends Function {
 		"entityRemovedHook",
 		"blockEvent"
 	};
-
-	public HookFunction(String name, String[] params, String body) {
+	public HookFunction(String name, String[] params, String body) throws Exception {
 		super(name,params,body);
 	}
-
 }

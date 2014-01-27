@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
+import pemapmodder.Utils;
 import pemapmodder.mcpeit.R.string;
-import pemapmodder.utils.Utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

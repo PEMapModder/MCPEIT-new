@@ -7,13 +7,9 @@
 package pemapmodder.mcpeit;
 
 import java.io.File;
-import java.lang.Thread.UncaughtExceptionHandler;
 
-import pemapmodder.js.ModPECreator;
-import pemapmodder.js.interpreter.JSInterpreter;
-import pemapmodder.js.lang.ModScript;
+import pemapmodder.Utils;
 import pemapmodder.mcpeit.R.string;
-import pemapmodder.utils.Utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,86 +27,37 @@ public class ModEditorMain extends Activity {
 	public static final String JS_EXCEPTION_MSG = "pemapmodder.mcpeit.ModEditorMain.jsExceptionMsg";
 	public static final String JS_EXCEPTION_PATH = "pemapmodder.mcpeit.ModEditorMain.jsExceptionPath";
 	protected boolean backToMain=false;
-	protected ModPECreator creator;
-	protected ModScript script;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(getLayout());
-		try {
-			final File f=new File(getIntent().getData().getPath());
-			final String scriptContent=Utils.readFile(f);
-			Thread interpreter=new Thread(new Runnable(){
-				@Override public void run() {
-					try {
-						script=JSInterpreter.toObject(scriptContent);
-					} catch (Exception e) {
-						jsErr(e,f);
-					}
-				}
-			});
-			interpreter.setPriority(Thread.MAX_PRIORITY);
-			interpreter.start();
-			interpreter.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){
-				@Override
-				public void uncaughtException(Thread thread, Throwable ex) {
-					Utils.err(getApplicationContext(), ex);
-				}
-			});
-			creator=new ModPECreator(this,f,script);
-			script=null;//to save memory
-		} catch (Throwable e) {
-			Utils.err(this,e);
-		}
-	}
-	protected void jsErr(Exception e,File f) {
-		startActivity(new Intent(this,ShowJSErrorActivity.class).putExtra(JS_EXCEPTION_MSG, e.getMessage()).putExtra(JS_EXCEPTION_PATH, f.getAbsolutePath()));
 	}
 	protected LinearLayout getLayout(){
 		LinearLayout ret=new LinearLayout(this);
 		ret.setOrientation(LinearLayout.VERTICAL);
-		
+		//Title TextView
 		TextView title=new TextView(this);
 		title.setText(getString(string.MEM_title$1)+" "+new File(getIntent().getData().getPath()).getName()+getString(string.MEM_title$2));
 		ret.addView(title, Utils.flatParams);
-		
-		Button viewRaw=new Button(this);
-		viewRaw.setText(string.MEM_viewScriptRaw);
-		viewRaw.setOnClickListener(new OnClickListener(){@Override public void onClick(View v){viewRaw();}});
-		ret.addView(viewRaw, Utils.wrapParams);
-		
-		Button viewTranslated=new Button(this);
-		viewTranslated.setText(string.MEM_viewScriptAI);
-		viewTranslated.setOnClickListener(new OnClickListener(){@Override public void onClick(View v){viewTranslated();}});
+		//DefBlock Button
+		Button defBlock=new Button(this);
+		defBlock.setText(string.MEM_defineNewBlock);
+		defBlock.setOnClickListener(new OnClickListener(){@Override public void onClick(View v){
+			defineBlock();
+		}});
+		ret.addView(defBlock,Utils.flatParams);
 		
 		return ret;
 	}
-	protected void viewTranslated() {
-		ScrollView sv=new ScrollView(this);
-		TextView tv=new TextView(this);
-		tv.setText(creator.toString());
-		sv.addView(tv, Utils.flatParams);
-		setContentView(sv);
-		this.backToMain=true;
-		Toast.makeText(this, string.MEM_viewScript_back, Toast.LENGTH_SHORT).show();
+	protected void defineBlock() {
+		// TODO Auto-generated method stub
+		
 	}
-	protected void viewRaw() {
-		ScrollView sv=new ScrollView(this);
-		TextView ll=new TextView(this);
-		ll.setText(creator.toRawString());
-		sv.addView(ll, Utils.flatParams);
-		setContentView(sv);
-		this.backToMain=true;
-		Toast.makeText(this, string.MEM_viewScript_back, Toast.LENGTH_SHORT).show();
-	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.mod_editor_main, menu);
 		return true;
 	}
-	@Override
-	public void onBackPressed(){
+	@Override public void onBackPressed(){
 		if(this.backToMain){
 			setContentView(getLayout());
 			this.backToMain=false;

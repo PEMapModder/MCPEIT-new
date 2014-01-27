@@ -8,7 +8,7 @@ package pemapmodder.mcpeit.idfinder;
 
 import java.util.Locale;
 
-import pemapmodder.utils.Utils;
+import pemapmodder.Utils;
 import android.app.Activity;
 import android.content.Context;
 

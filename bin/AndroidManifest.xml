@@ -42,7 +42,7 @@
             android:label="@string/title_activity_idfinder" >
         </activity>
         <activity
-            android:name="pemapmodder.mcpeit.ShowJSErrorActivity"
+            android:name="pemapmodder.js_DEPRECATED.ShowJSErrorActivity"
             android:label="@string/title_activity_show_jserror" >
         </activity>
     </application>

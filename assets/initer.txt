@@ -1,13 +1,6 @@
 /*Script made using MCPEIT by PEMapModder*/
-//MCPEITCONFIG;UsedIds:;
-/*MCPEITMDINITVARSSTARTS*/
-/*MCPEITMDINITVARSFINISH*/
-/*MCPEITMDINITSTMTSTARTS*/
-/*MCPEITMDINITSTMTFINISH*/
 function newLevel(){
-	/*MCPEITMDNEWLEVELSTARTS*/
 	clientMessage("Welcome to world "+Level.getWorldName()+"!");
 	clientMessage("You are using the mod "+mod_name+",");
 	clientMessage("created using MCPEIT by PEMapModder");
-	/*MCPEITMDNEWLEVELFINISH*/
 }

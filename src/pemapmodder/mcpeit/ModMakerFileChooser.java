@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import pemapmodder.Utils;
 import pemapmodder.mcpeit.R.string;
-import pemapmodder.utils.Utils;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -31,25 +31,21 @@ import android.widget.Toast;
 public class ModMakerFileChooser extends Activity {
 	protected static final int CHOOSE_FILE = 9542;
 	protected static final int NEW_FILE_EDITTEXT_ID = 6529;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(getLayout());
 		setupActionBar();
 	}
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB) private void setupActionBar() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.mod_maker_file_chooser, menu);
 		return true;
 	}
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
@@ -60,39 +56,29 @@ public class ModMakerFileChooser extends Activity {
 	protected LinearLayout getLayout(){
 		LinearLayout ret=new LinearLayout(this);
 		ret.setOrientation(LinearLayout.VERTICAL);
-		
 		//choose file button//
 		Button chooseFile=new Button(this);
 		chooseFile.setText(string.MMFC_chooseFile);
-		chooseFile.setOnClickListener(new OnClickListener(){
-			@Override public void onClick(View v){
-				chooseFile();
-			}
-		});
+		chooseFile.setOnClickListener(new OnClickListener(){@Override public void onClick(View v){
+			chooseFile();
+		}});
 		ret.addView(chooseFile, Utils.flatParams);
-		
 		//create new file layout
 		LinearLayout newFile=new LinearLayout(this);
 		newFile.setOrientation(LinearLayout.HORIZONTAL);
-		if(true){
-			Button create=new Button(this);
-			create.setText(string.MMFC_newFile);
-			create.setOnClickListener(new OnClickListener(){
-				@Override public void onClick(View v){
-					create(((EditText)findViewById(NEW_FILE_EDITTEXT_ID)).getText().toString());
-				}
-			});
-			newFile.addView(create, Utils.wrapParams);
-		}
-		if(true){
-			EditText filename=new EditText(this);
-			filename.setId(NEW_FILE_EDITTEXT_ID);
-			filename.setHint(string.MMFC_filename);
-			newFile.addView(filename, Utils.wrapParams);
-		}
-		
+		Button create=new Button(this);
+		create.setText(string.MMFC_newFile);
+		create.setOnClickListener(new OnClickListener(){
+			@Override public void onClick(View v){
+				create(((EditText)findViewById(NEW_FILE_EDITTEXT_ID)).getText().toString());
+			}
+		});
+		newFile.addView(create, Utils.wrapParams);
+		EditText filename=new EditText(this);
+		filename.setId(NEW_FILE_EDITTEXT_ID);
+		filename.setHint(string.MMFC_filename);
+		newFile.addView(filename, Utils.wrapParams);
 		ret.addView(newFile, Utils.flatParams);
-		
 		return ret;
 	}
 	protected void create(String name){

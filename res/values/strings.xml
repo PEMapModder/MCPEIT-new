@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * @Copyright (C) 2013-2014 PEMapModder
- * 
- * You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
--->
+ @Copyright (C) 2013-2014 PEMapModder
+ You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git-->
 <resources>
-
     <string name="app_name">MCPEIT</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+	
     <!-- StartActivity -->
     <string name="Start_welcome">Welcome to MCPEIT!</string>
     <string name="Start_modMaker">ModPE Script Maker!</string>
     <string name="Start_naughtyInit">File corrupted! Rebuilding config</string>
-
+	
     <!-- ModMakerFileChooser -->
     <string name="title_activity_mod_maker_file_chooser">ModMakerFileChooser</string>
     <string name="MMFC_chooseFile">Choose a file</string>
@@ -26,10 +23,8 @@
     <string name="title_activity_mod_editor_main">ModEditorMain</string>
     <string name="MEM_title$1">Editing</string>
     <string name="MEM_title$2">&#8230;</string>
-    <string name="MEM_viewScriptRaw">View the raw script</string>
-    <string name="MEM_viewScriptAI">View the script translated to human language</string>
-    <string name="MEM_viewScript_back">Press back button to return to the editor.</string>
-
+    <string name="MEM_defineNewBlock">View the raw script</string>
+    
     <!-- IDFinder -->
     <string name="title_activity_idfinder">IDFinderActivity</string>
     <string name="IDFinder_backTwicePress">Are you sure to cancel choosing item ID and go back? If yes, tap the back button again.</string>

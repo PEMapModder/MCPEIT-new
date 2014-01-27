@@ -41,17 +41,15 @@ public final class R {
         public static final int start=0x7f070004;
     }
     public static final class string {
-        public static final int IDFinder_backTwicePress=0x7f050012;
-        public static final int JSErr_dump=0x7f050017;
-        public static final int JSErr_dumpFinish=0x7f050018;
-        public static final int JSErr_errLog=0x7f050016;
-        public static final int JSErr_title$1=0x7f050014;
-        public static final int JSErr_title$2=0x7f050015;
+        public static final int IDFinder_backTwicePress=0x7f050010;
+        public static final int JSErr_dump=0x7f050015;
+        public static final int JSErr_dumpFinish=0x7f050016;
+        public static final int JSErr_errLog=0x7f050014;
+        public static final int JSErr_title$1=0x7f050012;
+        public static final int JSErr_title$2=0x7f050013;
+        public static final int MEM_defineNewBlock=0x7f05000e;
         public static final int MEM_title$1=0x7f05000c;
         public static final int MEM_title$2=0x7f05000d;
-        public static final int MEM_viewScriptAI=0x7f05000f;
-        public static final int MEM_viewScriptRaw=0x7f05000e;
-        public static final int MEM_viewScript_back=0x7f050010;
         public static final int MMFC_chooseFile=0x7f050007;
         public static final int MMFC_filename=0x7f050009;
         public static final int MMFC_newFile=0x7f050008;
@@ -66,7 +64,7 @@ public final class R {
         public static final int hello_world=0x7f050002;
         /**  IDFinder 
          */
-        public static final int title_activity_idfinder=0x7f050011;
+        public static final int title_activity_idfinder=0x7f05000f;
         /**  ModEditorMain 
          */
         public static final int title_activity_mod_editor_main=0x7f05000b;
@@ -75,7 +73,7 @@ public final class R {
         public static final int title_activity_mod_maker_file_chooser=0x7f050006;
         /**  JSErrShower 
          */
-        public static final int title_activity_show_jserror=0x7f050013;
+        public static final int title_activity_show_jserror=0x7f050011;
     }
     public static final class style {
         /** 

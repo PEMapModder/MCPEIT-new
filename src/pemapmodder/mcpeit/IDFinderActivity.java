@@ -1,9 +1,9 @@
 package pemapmodder.mcpeit;
 
+import pemapmodder.Utils;
 import pemapmodder.mcpeit.R.string;
 import pemapmodder.mcpeit.idfinder.IDFinder;
 import pemapmodder.mcpeit.idfinder.Id;
-import pemapmodder.utils.Utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

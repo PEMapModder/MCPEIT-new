@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  @Copyright (C) 2013-2014 PEMapModder
- You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git-->
+ You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+-->
 <resources>
 
     <string name="app_name">MCPEIT</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-	
+
     <!-- StartActivity -->
     <string name="Start_welcome">Welcome to MCPEIT!</string>
     <string name="Start_modMaker">ModPE Script Maker!</string>
@@ -27,7 +28,7 @@
     <string name="MEM_defineNewItem">Create a custom item</string>
     <string name="MEM_defineNewFoodItem">Create a custom food item</string>
     <string name="MEM_defineNewMob">*EXCLUSIVE* Create a custom mob\n(with limited shapes and actions)</string>
-    
+
     <!-- ModEditorMain subclasses -->
     <string name="title_activity_mem__def_block">Define new custom block</string>
     <string name="title_activity_mem__def_item">Define new custom item</string>
@@ -39,6 +40,9 @@
     <string name="MEM_mob_nameOptional">Mob name (optional)</string>
     <string name="MEM_mob_chooseRenderType">Choose a render type&#8230;</string>
     <string name="MEM_mob_chooseBehaviourType">Choose a mob type for its default behaviour&#8230;</string>
+    <string name="MEM_mob_whenClose">When the mob is $1 close from player, do the following actions:</string>
+    <string name="MEM_mob_distanceActivate">distance in blocks</string>
+    <string name="MEM_mob_addAction">Add a new action</string>
 
     <!-- IDFinder -->
     <string name="title_activity_idfinder">IDFinderActivity</string>
@@ -51,5 +55,6 @@
     <string name="JSErr_errLog">Error log:</string>
     <string name="JSErr_dump">Dump error log to </string>
     <string name="JSErr_dumpFinish">Dump error log finished</string>
+    <string name="title_activity_mob_action_selector">Mob action selector</string>
 
 </resources>

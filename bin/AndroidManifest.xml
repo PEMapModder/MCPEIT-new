@@ -61,6 +61,10 @@
             android:name="pemapmodder.mcpeit.MEM_DefMob"
             android:label="@string/title_activity_mem__def_mob" >
         </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.MobActionSelector"
+            android:label="@string/title_activity_mob_action_selector" >
+        </activity>
     </application>
 
 </manifest>

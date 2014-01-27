@@ -37,9 +37,8 @@ public class ModMakerFileChooser extends Activity {
 		setupActionBar();
 	}
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB) private void setupActionBar() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
 	}
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.mod_maker_file_chooser, menu);
@@ -58,9 +57,12 @@ public class ModMakerFileChooser extends Activity {
 		ret.setOrientation(LinearLayout.VERTICAL);
 		//choose file button//
 		Button chooseFile=new Button(this);
+		
+		chooseFile.setClickable(false);
+		
 		chooseFile.setText(string.MMFC_chooseFile);
 		chooseFile.setOnClickListener(new OnClickListener(){@Override public void onClick(View v){
-			chooseFile();
+//			chooseFile();
 		}});
 		ret.addView(chooseFile, Utils.flatParams);
 		//create new file layout
@@ -84,13 +86,12 @@ public class ModMakerFileChooser extends Activity {
 	protected void create(String name){
 		File f=new File(Utils.getAppDir().getAbsolutePath()+"/scripts/"+name+".js");
 		try{
-			FileOutputStream os=new FileOutputStream(f);
+/*			FileOutputStream os=new FileOutputStream(f);
 			InputStream is=getAssets().open("initer.txt");
-			for(int c=is.read();c!=-1;c=is.read()){
+			for(int c=is.read();c!=-1;c=is.read())
 				os.write(c);
-			}
 			os.close();
-			is.close();
+			is.close();*/
 			startActivity(new Intent(this,ModEditorMain.class).setData(Uri.fromFile(f)));
 		}catch(Exception e){
 			Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();

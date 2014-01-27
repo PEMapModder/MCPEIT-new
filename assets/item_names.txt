@@ -1,6 +1,5 @@
-#
+#File: item names
 #@Copyright (C) 2013-2014 PEMapModder
-# 
 #Anyone may use this text file for any purposes as long as they give credit to the people who contributed to this list on minecraftforum.net
 #
 #A list of MCPE item names (official and unofficial) of different languages. Thanks to the members on minecraftforum.net

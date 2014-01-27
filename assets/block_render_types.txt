@@ -1,0 +1,18 @@
+#File: block render types
+# @Copyright (C) 2013-2014 PEMapModder
+# You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+0:standard solid cube
+1:flower
+2:torch
+3:fire
+4:fluid
+6:crops
+7:door
+8:ladder
+10:stairs
+11:fence
+13:cactus
+14:bed
+18:glass pane
+19:stem
+21:fence gate

@@ -12,7 +12,6 @@ import java.io.OutputStreamWriter;
 import java.lang.Thread.UncaughtExceptionHandler;
 
 import pemapmodder.Utils;
-import pemapmodder.mcpeit.ModEditorMain;
 import pemapmodder.mcpeit.R;
 import pemapmodder.mcpeit.R.string;
 import android.app.Activity;
@@ -27,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+//import pemapmodder.mcpeit.ModEditorMain;
 
 public class ShowJSErrorActivity extends Activity {
 	public class handleException implements UncaughtExceptionHandler{
@@ -48,7 +48,6 @@ public class ShowJSErrorActivity extends Activity {
 		titleLayout.setOrientation(LinearLayout.HORIZONTAL);
 		
 		TextView title=new TextView(this);
-		title.setText(string.JSErr_title$1+" "+getIntent().getStringExtra(ModEditorMain.JS_EXCEPTION_PATH));
 		title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
 		titleLayout.addView(title, Utils.wrapParams);
 		
@@ -97,8 +96,8 @@ public class ShowJSErrorActivity extends Activity {
 			osw.append(DateFormat.format("dd-MM-YYYY hh:mm:ss",
 					System.currentTimeMillis())+"\n");
 			osw.append("Error occurred while trying to read javascript file at \r");
-			osw.append("    "+getIntent().getStringExtra(ModEditorMain.JS_EXCEPTION_PATH)+"\n");
-			osw.append(getIntent().getStringExtra(ModEditorMain.JS_EXCEPTION_MSG));
+//			osw.append("    "+getIntent().getStringExtra(ModEditorMain.JS_EXCEPTION_PATH)+"\n");
+//			osw.append(getIntent().getStringExtra(ModEditorMain.JS_EXCEPTION_MSG));
 			osw.append("\nERROR_DUMP_END\n\n");
 			osw.close();
 	}

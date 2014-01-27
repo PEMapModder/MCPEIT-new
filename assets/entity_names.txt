@@ -1,0 +1,32 @@
+#File: mob names
+# @Copyright (C) 2013-2014 PEMapModder
+# You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+chicken:10
+cow:11
+pig:12
+sheep:13
+zombie:32
+creeper:33
+skeleton:34
+spider:35
+#if one has two names, except for putting the best one in the first line
+#priority doesn't matter
+zombie pigman:36
+zombie pigmen:36
+pigzombie:36
+arrow:80
+shot arrow:81
+shooting arrow:81
+flying arrow:81
+snowball:81
+thrown snowball:81
+flying snowball:81
+egg:82
+thrown egg:82
+flying egg:82
+painting:83
+canvas:83
+dropped item:64
+primed tnt:65
+tnt:65
+falling block:66

@@ -1,0 +1,23 @@
+# File: entities render type
+# @Copyright (C) 2013-2014 PEMapModder 
+# You may share redistributions of this software for non-commercial use as long as you indicate the original creator PEMapModder and the source https://github.com/pemapmodder/MCPEIT-new.git
+0:you guess
+2:tnt
+3:player
+4:dropped item
+5:you guess
+6:chicken
+7:cow
+8:pig
+9:sheep
+10:you guess
+11:zombie
+12:skeleton
+13:spider
+14:creeper with glitches
+15:arrow
+16:player (crash, don't use)
+17:egg
+18:snowball
+19:painting (crash, don't use)
+20:falling block

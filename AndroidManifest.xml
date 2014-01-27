@@ -45,6 +45,22 @@
             android:name="pemapmodder.js_DEPRECATED.ShowJSErrorActivity"
             android:label="@string/title_activity_show_jserror" >
         </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.MEM_DefBlock"
+            android:label="@string/title_activity_mem__def_block" >
+        </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.MEM_DefItem"
+            android:label="@string/title_activity_mem__def_item" >
+        </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.MEM_DefFood"
+            android:label="@string/title_activity_mem__def_food" >
+        </activity>
+        <activity
+            android:name="pemapmodder.mcpeit.MEM_DefMob"
+            android:label="@string/title_activity_mem__def_mob" >
+        </activity>
     </application>
 
 </manifest>

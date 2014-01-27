@@ -6,9 +6,11 @@
 
 package pemapmodder;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import android.app.Activity;
 import android.content.Context;
@@ -72,11 +74,12 @@ public class Utils {
 	 */
 	public static String readFile(InputStream is)throws Throwable{
 		String ret="";
+		BufferedReader br=new BufferedReader(new InputStreamReader(is));
 		try{
-			for(int c=is.read();c!=-1;c=is.read()){
-				ret+=c;
-			}
+			for(String line=br.readLine();line!=null;line=br.readLine())
+				ret+=(line+"\n");
 		}finally{
+			br.close();
 			is.close();
 		}
 		return ret;
@@ -84,7 +87,7 @@ public class Utils {
 	public final static String[][][] getNames(Activity a){
 		String[][][] ret={};
 		try{
-			String c=readFile(a.getAssets().open("names.txt"));
+			String c=readFile(a.getAssets().open("item_names.txt"));
 			String[] itemsRaw=c.split("\n");
 			String[] items={};
 			for(int i=0;i<itemsRaw.length;i++){
@@ -118,10 +121,82 @@ public class Utils {
 	 * @param e
 	 */
 	public static void err(Context ctx, Throwable e) {
-		Log.e(ctx.getClass().getName(), e.toString());
+		Log.e(ctx.getClass().getPackage().getName()+'.'+ctx.getClass().getName(), e.toString());
 		Toast.makeText(ctx, (e.getMessage()==null?e.toString():e.getMessage()), Toast.LENGTH_LONG).show();
 	}
 	public static boolean compare(String a, String b) {
 		return a.contains(b)||b.contains(a)||a==null||b==null||a==""||b=="";
+	}
+	public static String[] evalAssets(String filename,Context ctx) throws Throwable{
+		InputStream is=ctx.getAssets().open(filename);
+		String[] lines=readFile(is).split("\n");
+		String[] out={};
+		for(int i=0;i<lines.length;i++){
+			if(lines[i].charAt(0)!='#'&&lines[i]!="")//if not (begin with # or empty)
+				out[out.length]=lines[i];
+		}
+		return out;
+	}
+	public static NameAndId[] getEntities(Context ctx) throws Throwable{
+		String[] mobs=evalAssets("item_names.txt",ctx);
+		NameAndId[] out={};
+		for(int i=0;i<mobs.length;i++){
+			String[] values=mobs[i].split(":");
+			out[out.length]=new NameAndId(values[0],
+					Integer.decode(values[1]));
+		}
+		return out;
+	}
+	public static String getEntityName(int id,Context ctx) throws Throwable{
+		NameAndId[] eais=getEntities(ctx);
+		for(int i=0;i<eais.length;i++){
+			if(eais[i].getId()==id)
+				return eais[i].getName();
+		}
+		return null;
+	}
+	public static int getEntityId(String name,Context ctx) throws Throwable{
+		NameAndId[] eais=getEntities(ctx);
+		for(int i=0;i<eais.length;i++){
+			if(eais[i].getName().equalsIgnoreCase(name))
+				return eais[i].getId();
+		}
+		return -1;
+	}
+	public static NameAndId[] getEntitiesRenderTypes(Context ctx) throws Throwable{
+		String[] lines=evalAssets("entity_render_types.txt",ctx);
+		NameAndId[] out={};
+		for(int i=0;i<lines.length;i++){
+			String[] values=lines[i].split(":");
+			if(values.length!=2){
+				Exception ex=new Exception("Error during finding entity render types");
+				err(ctx,ex);
+				throw ex; 
+			}
+			out[out.length]=new NameAndId(values[1],Integer.decode(values[0]));
+		}
+		return out;
+	}
+	public static NameAndId[] getBlocksRenderTypes(Context ctx) throws Throwable{
+		String[] lines=evalAssets("block_render_types.txt",ctx);
+		NameAndId[] out={};
+		for(int i=0;i<lines.length;i++){
+			String[] values=lines[i].split(":");
+			if(values.length!=2){
+				Exception ex=new Exception("Error during finding block render types");
+				err(ctx,ex);
+				throw ex; 
+			}
+			out[out.length]=new NameAndId(values[1],Integer.decode(values[0]));
+		}
+		return out;
+	}
+	public static int getEntityRenderId(String name,Context ctx) throws Throwable {
+		NameAndId[] nais=getEntitiesRenderTypes(ctx);
+		for(int i=0;i<nais.length;i++){
+			if(nais[i].getName().equalsIgnoreCase(name))
+				return nais[i].getId();
+		}
+		return -1;
 	}
 }

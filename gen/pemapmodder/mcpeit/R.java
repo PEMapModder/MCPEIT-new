@@ -57,6 +57,8 @@ public final class R {
         public static final int JSErr_errLog=0x7f050023;
         public static final int JSErr_title$1=0x7f050021;
         public static final int JSErr_title$2=0x7f050022;
+        public static final int MAS_showActionsList=0x7f050028;
+        public static final int MAS_title=0x7f050027;
         public static final int MEM_confirmBack$1=0x7f050015;
         public static final int MEM_confirmBack$2=0x7f050016;
         public static final int MEM_defineNewBlock=0x7f05000d;

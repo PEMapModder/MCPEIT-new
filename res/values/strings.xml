@@ -56,5 +56,7 @@
     <string name="JSErr_dump">Dump error log to </string>
     <string name="JSErr_dumpFinish">Dump error log finished</string>
     <string name="title_activity_mob_action_selector">Mob action selector</string>
+    <string name="MAS_title">Select a mob action</string>
+    <string name="MAS_showActionsList">Show list of actions</string>
 
 </resources>

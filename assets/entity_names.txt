@@ -15,9 +15,9 @@ zombie pigman:36
 zombie pigmen:36
 pigzombie:36
 arrow:80
-shot arrow:81
-shooting arrow:81
-flying arrow:81
+shot arrow:80
+shooting arrow:80
+flying arrow:80
 snowball:81
 thrown snowball:81
 flying snowball:81

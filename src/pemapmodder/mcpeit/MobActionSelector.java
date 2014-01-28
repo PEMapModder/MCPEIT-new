@@ -21,6 +21,7 @@ public class MobActionSelector extends Activity {
 		LinearLayout ret=new LinearLayout(this);
 		switch(this.view){
 		case VIEW_LIST:
+	 	 	
 			break;
 		case VIEW_YAW:
 			break;

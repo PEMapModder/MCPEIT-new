@@ -14,6 +14,8 @@ import java.io.OutputStreamWriter;
 import android.app.Activity;
 
 public class ModCreator{
+	private int[] items={}, blocks={};
+	private Bundle[] mobs;
 	OutputStreamWriter osw;
 	Activity activity;
 	public ModCreator(OutputStream os,Activity a) throws Throwable{
@@ -23,4 +25,8 @@ public class ModCreator{
 	public ModCreator(File f,Activity a) throws Throwable{
 		this(new FileOutputStream(f),a);
 	}
+	public void defineMob(int behavId, int shapeId){
+	 	
+	}
 }
+// TODO save into file
